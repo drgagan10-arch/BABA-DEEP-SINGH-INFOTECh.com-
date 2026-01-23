@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baba Deep Singh Infotech | Web Design & Development</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Description -->
-  <meta name="description" content="Baba Deep Singh Infotech offers professional website design and development services. Modern, responsive, business-focused websites to grow your brand online.">
+<title>Baba Deep Singh Infotech | Web Design & Development</title>
 
-  <!-- Keywords -->
-  <meta name="keywords" content="Web Design, Web Development, Responsive Website, UI/UX Design, Business Website, E-commerce Website, Digital Solutions, Modern Website, Website Designer India, BDS Infotech">
-
-  <!-- Author -->
-  <meta name="author" content="Baba Deep Singh Infotech">
-
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Baba Deep Singh Infotech | Web Design & Development">
-  <meta property="og:description" content="Professional web design & development services. Modern, responsive, and business-focused websites for your brand.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECH.com/">
-  <meta property="og:image" content="https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECH.com/logo.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Baba Deep Singh Infotech | Web Design & Development">
-  <meta name="twitter:description" content="Professional web design & development services. Modern, responsive, and business-focused websites for your brand.">
-  <meta name="twitter:image" content="https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECH.com/logo.png">
-</head>
-
+<meta name="description" content="Professional web design and development services in India.">
+<meta name="keywords" content="Web Design, Web Development, BDS Infotech">
+<meta name="author" content="Baba Deep Singh Infotech">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Montserrat:wght@400;600&display=swap');
@@ -39,215 +19,68 @@ body{
   font-family:'Montserrat',sans-serif;
   background:radial-gradient(circle at top,#1b1f3a,#050512);
   color:#fff;
-  overflow:hidden;
+  overflow-x:hidden;
 }
 
-/* ===== GLOBAL ===== */
-.page{
-  display:none;
-  height:100vh;
-  overflow:auto;
-  padding:100px 20px 40px;
-}
+.page{display:none;height:100vh;overflow:auto;padding:100px 20px 40px}
 .page.active{display:block}
-
 .container{max-width:1200px;margin:auto}
+h1,h2{font-family:'Orbitron',sans-serif;color:#ffb700;text-shadow:0 0 20px #ffb700}
+.btn{padding:14px 40px;border:none;border-radius:50px;background:#ffb700;font-weight:700;cursor:pointer;box-shadow:0 0 30px #ffb700}
 
-h1,h2{
-  font-family:'Orbitron',sans-serif;
-  color:#ffb700;
-  text-shadow:0 0 20px #ffb700;
-}
-
-.btn{
-  padding:14px 40px;
-  border:none;
-  border-radius:50px;
-  background:#ffb700;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 0 30px #ffb700;
-}
-.btn:hover{transform:scale(1.08)}
-
-/* ===== NAVBAR ===== */
 nav{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  padding:15px 30px;
-  display:flex;
+  position:fixed;top:0;left:0;width:100%;
+  padding:15px 30px;display:flex;
   justify-content:space-between;
-  background:#050512;
-  z-index:999;
+  background:#050512;z-index:999
 }
-
-nav a{
-  color:white;
-  margin-left:25px;
-  text-decoration:none;
-  font-weight:600;
-}
+nav a{color:white;margin-left:25px;text-decoration:none;font-weight:600;cursor:pointer}
 nav a:hover{color:#ffb700}
 
-/* ===== LOGO ANIMATION ===== */
-.logo{
-  font-family:'Orbitron',sans-serif;
-  font-size:1.6rem;
-  color:#ffb700;
-  animation:logoFloat 3s ease-in-out infinite;
-}
-@keyframes logoFloat{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
-  100%{transform:translateY(0)}
-}
-
-/* ===== HERO ===== */
-.hero{
-  text-align:center;
-  margin-top:40px;
-}
-.hero h1{
-  font-size:3.2rem;
-  animation:pulse 2.5s infinite alternate;
-}
-@keyframes pulse{
-  from{text-shadow:0 0 20px #ffb700}
-  to{text-shadow:0 0 45px #ffb700}
-}
-
-/* ===== HOME TEXT ===== */
-.home-text{
-  margin-top:50px;
-  line-height:1.9;
-  font-size:1.1rem;
-  background:rgba(15,15,40,.85);
-  padding:35px;
-  border-radius:20px;
-  box-shadow:0 0 35px rgba(255,183,0,.3);
-}
-
-/* ===== FORM ===== */
 input,textarea{
-  width:100%;
-  padding:12px;
-  margin:10px 0 20px;
-  border-radius:10px;
-  border:none;
-}
-input:focus,textarea:focus{
-  outline:none;
-  box-shadow:0 0 15px #ffb700;
+  width:100%;padding:12px;margin:10px 0 20px;
+  border-radius:10px;border:none
 }
 
-/* ===== ADMIN ===== */
 .admin-header{
-  background:#ffb700;
-  color:#050512;
-  padding:20px;
-  text-align:center;
-  font-family:'Orbitron',sans-serif;
-  font-size:1.6rem;
+  background:#ffb700;color:#050512;
+  padding:20px;text-align:center;
+  font-family:'Orbitron',sans-serif;font-size:1.6rem
 }
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-th,td{
-  border:1px solid #ffb700;
-  padding:10px;
-}
+
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #ffb700;padding:10px}
 th{background:#ffb700;color:#050512}
-
-/* ===== CONTACT GLOW ===== */
-.contact-wrap{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  margin-top:40px;
-}
-.contact-card{
-  background:rgba(10,10,30,.6);
-  padding:40px;
-  border-radius:25px;
-  text-align:center;
-  width:260px;
-  box-shadow:0 0 25px rgba(255,183,0,.3);
-  transition:.5s;
-  cursor:pointer;
-}
-.contact-card:hover{
-  transform:translateY(-20px) scale(1.1);
-  box-shadow:0 0 70px rgba(255,183,0,.9);
-}
-.contact-card a{
-  color:#fff;
-  text-decoration:none;
-  font-size:1.1rem;
-}
-
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  width:65px;
-  height:65px;
-  background:#25d366;
-  color:white;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:32px;
-  text-decoration:none;
-  box-shadow:0 0 30px #25d366;
-  animation:float 2s infinite;
-}
-@keyframes float{
-  50%{transform:translateY(-10px)}
-}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">BDS INFOTECH</div>
+  <div style="font-family:Orbitron;color:#ffb700">BDS INFOTECH</div>
   <div>
     <a onclick="showPage('home')">Home</a>
     <a onclick="showPage('order')">Order</a>
-    <a onclick="showPage('about')">About Us</a>
-    <a onclick="showPage('contact')">Contact</a>
-    <a onclick="showPage('terms')">Terms</a>
-    <a onclick="showPage('privacy')">Privacy</a>
     <a onclick="showPage('admin')">Admin</a>
   </div>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="page active">
-  <div class="container hero">
+  <div class="container">
     <h1>Website Designing & Development</h1>
-    <p>High-quality • Modern • Business-focused</p>
+    <p>Modern • Responsive • Business Focused</p>
     <button class="btn" onclick="showPage('order')">Start Project</button>
-
-    <div class="home-text">
-      <p>Professional web design & development services.</p>
-      <p>Modern UI/UX, responsive layouts, scalable solutions.</p>
-      <p>Helping brands grow digitally with confidence.</p>
-    </div>
   </div>
 </div>
 
 <!-- ORDER -->
 <div id="order" class="page">
   <div class="container">
-    <h2>Order / Query Department</h2>
+    <h2>Order / Query</h2>
     <form id="orderForm">
       <input id="name" placeholder="Name" required>
-      <input id="mobile" placeholder="Mobile" pattern="[0-9]{10}" required>
+      <input id="mobile" type="tel" pattern="[0-9]{10}" placeholder="Mobile" required>
       <textarea id="message" placeholder="Your requirement" required></textarea>
       <button class="btn">Submit</button>
       <p id="success"></p>
@@ -255,70 +88,16 @@ th{background:#ffb700;color:#050512}
   </div>
 </div>
 
-<!-- ABOUT US -->
-<div id="about" class="page">
-  <div class="container">
-    <h2>About Us</h2>
-    <p>Baba Deep Singh Infotech is a cutting-edge web development and design company, dedicated to creating impactful digital solutions for businesses of all sizes.</p>
-    <p>We specialize in building responsive, modern websites that not only look amazing but also deliver performance and scalability. Our team focuses on user experience, ensuring your visitors have seamless interactions.</p>
-    <p>Our mission is to empower brands with technology, enhancing their online presence while maintaining high standards of quality and innovation.</p>
-    <p>With a passion for creativity and precision, we take pride in understanding each client's unique needs and translating them into digital realities that drive results.</p>
-    <p>From conceptual design to final deployment, we support our clients through every step, ensuring their digital journey is smooth, efficient, and rewarding.</p>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-  <div class="container">
-    <h2>Contact Department</h2>
-    <div class="contact-wrap">
-      <div class="contact-card">
-        📞<br><br>
-        <a href="tel:6280629868">+91 62806 29868</a>
-      </div>
-      <div class="contact-card">
-        📧<br><br>
-        <a href="mailto:drgagan.10@gmail.com">drgagan.10@gmail.com</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TERMS & CONDITIONS -->
-<div id="terms" class="page">
-  <div class="container">
-    <h2>Terms & Conditions</h2>
-    <p>By using Baba Deep Singh Infotech's services, you agree to the following terms:</p>
-    <ul>
-      <li>All projects and content provided by us remain under our intellectual property until full payment is received.</li>
-      <li>Clients are responsible for providing accurate and complete information required for project execution.</li>
-      <li>We reserve the right to modify, update, or discontinue services without prior notice.</li>
-      <li>Any disputes will be resolved in accordance with the laws of India.</li>
-      <li>Confidentiality is maintained for all client data unless disclosure is required by law.</li>
-    </ul>
-  </div>
-</div>
-
-<!-- PRIVACY POLICY -->
-<div id="privacy" class="page">
-  <div class="container">
-    <h2>Privacy Policy</h2>
-    <p>At Baba Deep Singh Infotech, your privacy is our priority. We collect only necessary data to provide and improve our services.</p>
-    <p>We do not share personal information with third parties except where required for legal compliance or project execution.</p>
-    <p>Data such as names, contact numbers, and messages from order forms are securely stored in local storage and used solely for service purposes.</p>
-    <p>By interacting with our website, you consent to the collection and use of this information in accordance with this policy.</p>
-  </div>
-</div>
-
 <!-- ADMIN -->
 <div id="admin" class="page">
-  <div class="admin-header">⚠️ ONLY FOR STAFF</div>
+  <div class="admin-header">ADMIN PANEL</div>
   <div class="container">
     <div id="loginBox">
       <input id="adminKey" placeholder="Enter admin key">
-      <button class="btn" onclick="login()">Unlock Admin Panel</button>
+      <button class="btn" onclick="login()">Login</button>
       <p id="loginMsg"></p>
     </div>
+
     <div id="adminPanel" style="display:none">
       <table>
         <thead>
@@ -330,62 +109,75 @@ th{background:#ffb700;color:#050512}
   </div>
 </div>
 
-<a class="whatsapp" href="https://wa.me/916280629868" target="_blank">💬</a>
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
+/* FIREBASE CONFIG */
+firebase.initializeApp({
+  apiKey: "AIzaSyAbeKLO-fq6vwjx8Fyd3ONa_WdIVTi58k4",
+  authDomain: "bdsifotech.firebaseapp.com",
+  projectId: "bdsifotech",
+  storageBucket: "bdsifotech.firebasestorage.app",
+  messagingSenderId: "487791641568",
+  appId: "1:487791641568:web:55df83e7668da810e62185"
+});
+
+const db = firebase.firestore();
+
+/* PAGE SWITCH */
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-
-  if(id==="order"){
-    let savedMobile=localStorage.getItem("savedMobile");
-    if(savedMobile) mobile.value=savedMobile;
-  }
 }
 
-orderForm.onsubmit=e=>{
+/* ORDER SUBMIT */
+orderForm.onsubmit = async e => {
   e.preventDefault();
-  let orders=JSON.parse(localStorage.orders||"[]");
 
-  orders.push({
-    name:name.value,
-    mobile:mobile.value,
-    message:message.value,
-    date:new Date().toLocaleString()
+  await db.collection("orders").add({
+    name: name.value,
+    mobile: mobile.value,
+    message: message.value,
+    date: new Date().toLocaleString()
   });
 
-  localStorage.orders=JSON.stringify(orders);
-  localStorage.setItem("savedMobile",mobile.value);
-
-  success.textContent="Submitted successfully!";
+  success.textContent = "Submitted successfully!";
   orderForm.reset();
-  mobile.value=localStorage.getItem("savedMobile");
 };
 
+/* ADMIN LOGIN */
 function login(){
-  const key = adminKey.value.trim();
-  if(key === "BDS2026"){ // <-- special admin key
-    loginBox.style.display="none";
-    adminPanel.style.display="block";
-
-    let orders = JSON.parse(localStorage.orders || "[]");
-    data.innerHTML = "";
-    orders.forEach(o => {
-      data.innerHTML += `<tr>
-        <td>${o.name}</td>
-        <td>${o.mobile}</td>
-        <td>${o.message}</td>
-        <td>${o.date}</td>
-      </tr>`;
-    });
-  } else {
+  if(adminKey.value !== "BDS2026"){
     loginMsg.textContent = "Wrong key!";
+    return;
   }
+
+  loginBox.style.display = "none";
+  adminPanel.style.display = "block";
+
+  db.collection("orders").onSnapshot(snapshot => {
+    data.innerHTML = "";
+    snapshot.forEach(doc => {
+      const o = doc.data();
+      data.innerHTML += `
+        <tr>
+          <td>${o.name}</td>
+          <td>${o.mobile}</td>
+          <td>${o.message}</td>
+          <td>${o.date}</td>
+        </tr>
+      `;
+    });
+  });
 }
 </script>
 
 </body>
 </html>
+
+
 
 
 
