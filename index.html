@@ -205,63 +205,89 @@ th{background:#ffb700;color:#050512}
   </div>
 </div>
 
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy,
+    serverTimestamp,
+    onSnapshot
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-<script>
-firebase.initializeApp({
-  apiKey: "AIzaSyAbeKLO-fq6vwjx8Fyd3ONa_WdIVTi58k4",
-  authDomain: "bdsifotech.firebaseapp.com",
-  projectId: "bdsifotech",
-  storageBucket: "bdsifotech.firebasestorage.app",
-  messagingSenderId: "487791641568",
-  appId: "1:487791641568:web:55df83e7668da810e62185"
-});
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
+    authDomain: "infotech-e1174.firebaseapp.com",
+    projectId: "infotech-e1174",
+    storageBucket: "infotech-e1174.firebasestorage.app",
+    messagingSenderId: "243395836512",
+    appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
+  };
 
-const db = firebase.firestore();
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-orderForm.onsubmit = async e => {
-  e.preventDefault();
-  await db.collection("orders").add({
-    name: name.value,
-    mobile: mobile.value,
-    message: message.value,
-    date: new Date().toLocaleString()
-  });
-  success.textContent = "Submitted successfully!";
-  orderForm.reset();
-};
-
-function login(){
-  if(adminKey.value !== "BDS2026"){
-    loginMsg.textContent = "Wrong key!";
-    return;
+  // ===== Page Navigation =====
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
   }
-  loginBox.style.display="none";
-  adminPanel.style.display="block";
 
-  db.collection("orders").onSnapshot(snap=>{
-    data.innerHTML="";
-    snap.forEach(doc=>{
-      const o = doc.data();
-      data.innerHTML += `<tr>
-        <td>${o.name}</td>
-        <td>${o.mobile}</td>
-        <td>${o.message}</td>
-        <td>${o.date}</td>
-      </tr>`;
-    });
+  window.showPage = showPage; // make accessible from HTML onclick
+
+  // ===== Submit Form =====
+  const form = document.getElementById("orderForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, "orders"), {
+        name: document.getElementById("name").value,
+        mobile: document.getElementById("mobile").value,
+        message: document.getElementById("message").value,
+        createdAt: serverTimestamp()
+      });
+      document.getElementById("success").textContent = "Submitted successfully!";
+      form.reset();
+    } catch (err) {
+      alert("ERROR: " + err.message);
+    }
   });
-}
+
+  // ===== Admin Login & Load =====
+  window.login = async function() {
+    if(document.getElementById("adminKey").value !== "BDS2026"){
+      document.getElementById("loginMsg").textContent = "Wrong key!";
+      return;
+    }
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("adminPanel").style.display="block";
+
+    // Real-time updates
+    const ordersCol = collection(db, "orders");
+    onSnapshot(ordersCol, (snap) => {
+      const tbody = document.getElementById("data");
+      tbody.innerHTML = "";
+      snap.forEach(doc => {
+        const o = doc.data();
+        tbody.innerHTML += `
+          <tr>
+            <td>${o.name}</td>
+            <td>${o.mobile}</td>
+            <td>${o.message}</td>
+            <td>${o.createdAt?.toDate().toLocaleString() || ""}</td>
+          </tr>`;
+      });
+    });
+  }
+</script>
+
 </script>
 
 </body>
 </html>
+
 
 
