@@ -7,101 +7,34 @@
 <title>Baba Deep Singh Infotech | Web Design & Development</title>
 
 <meta name="description" content="Baba Deep Singh Infotech offers professional website design and development services.">
-<meta name="keywords" content="Web Design, Web Development, Responsive Website, UI/UX, Business Website">
+<meta name="keywords" content="Web Design, Web Development, Responsive Website, UI/UX, Business Website, E-commerce, Digital Solutions">
 <meta name="author" content="Baba Deep Singh Infotech">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Montserrat:wght@400;600&display=swap');
 
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Montserrat',sans-serif;
-  background:radial-gradient(circle at top,#1b1f3a,#050512);
-  color:#fff;
-  overflow-x:hidden;
-}
-
+body{margin:0;font-family:'Montserrat',sans-serif;background:radial-gradient(circle at top,#1b1f3a,#050512);color:#fff;overflow-x:hidden;}
 .page{display:none;height:100vh;overflow:auto;padding:100px 20px 40px}
 .page.active{display:block}
 .container{max-width:1200px;margin:auto}
-
-h1,h2{
-  font-family:'Orbitron',sans-serif;
-  color:#ffb700;
-  text-shadow:0 0 20px #ffb700
-}
-
-.btn{
-  padding:14px 40px;
-  border:none;
-  border-radius:50px;
-  background:#ffb700;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 0 30px #ffb700
-}
-
-nav{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  padding:15px 30px;
-  display:flex;
-  justify-content:space-between;
-  background:#050512;
-  z-index:999
-}
-nav a{
-  color:white;
-  margin-left:25px;
-  text-decoration:none;
-  font-weight:600;
-  cursor:pointer
-}
+h1,h2{font-family:'Orbitron',sans-serif;color:#ffb700;text-shadow:0 0 20px #ffb700}
+.btn{padding:14px 40px;border:none;border-radius:50px;background:#ffb700;font-weight:700;cursor:pointer;box-shadow:0 0 30px #ffb700}
+.btn:hover{transform:scale(1.05)}
+nav{position:fixed;top:0;left:0;width:100%;padding:15px 30px;display:flex;justify-content:space-between;background:#050512;z-index:999}
+nav a{color:white;margin-left:25px;text-decoration:none;font-weight:600;cursor:pointer}
 nav a:hover{color:#ffb700}
-
-.logo{
-  font-family:'Orbitron',sans-serif;
-  font-size:1.6rem;
-  color:#ffb700
-}
-
+.logo{font-family:'Orbitron',sans-serif;font-size:1.6rem;color:#ffb700}
 .hero{text-align:center;margin-top:40px}
-
-.home-text{
-  margin-top:50px;
-  line-height:1.9;
-  font-size:1.1rem;
-  background:rgba(15,15,40,.85);
-  padding:35px;
-  border-radius:20px;
-  box-shadow:0 0 35px rgba(255,183,0,.3)
-}
-
-input,textarea{
-  width:100%;
-  padding:12px;
-  margin:10px 0 20px;
-  border-radius:10px;
-  border:none
-}
-
-.admin-header{
-  background:#ffb700;
-  color:#050512;
-  padding:20px;
-  text-align:center;
-  font-family:'Orbitron',sans-serif;
-  font-size:1.6rem
-}
-
+.home-text{margin-top:50px;line-height:1.9;font-size:1.1rem;background:rgba(15,15,40,.85);padding:35px;border-radius:20px;box-shadow:0 0 35px rgba(255,183,0,.3)}
+input,textarea{width:100%;padding:12px;margin:10px 0 20px;border-radius:10px;border:none}
+input:focus,textarea:focus{outline:none;box-shadow:0 0 15px #ffb700}
+.admin-header{background:#ffb700;color:#050512;padding:20px;text-align:center;font-family:'Orbitron',sans-serif;font-size:1.6rem}
 table{width:100%;border-collapse:collapse}
 th,td{border:1px solid #ffb700;padding:10px}
 th{background:#ffb700;color:#050512}
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -153,6 +86,7 @@ th{background:#ffb700;color:#050512}
     <p>Baba Deep Singh Infotech is a cutting-edge web development and design company, dedicated to creating impactful digital solutions for businesses of all sizes.</p>
     <p>We specialize in building responsive, modern websites that not only look amazing but also deliver performance and scalability.</p>
     <p>Our mission is to empower brands with technology, enhancing their online presence while maintaining high standards of quality and innovation.</p>
+    <p>From conceptual design to final deployment, we support our clients through every step, ensuring their digital journey is smooth and rewarding.</p>
   </div>
 </div>
 
@@ -181,7 +115,7 @@ th{background:#ffb700;color:#050512}
 <div id="privacy" class="page">
   <div class="container">
     <h2>Privacy Policy</h2>
-    <p>We collect only necessary data and never sell personal information.</p>
+    <p>We collect only necessary data and never sell personal information. Data submitted is used only to provide our services.</p>
   </div>
 </div>
 
@@ -206,88 +140,84 @@ th{background:#ffb700;color:#050512}
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    query,
-    orderBy,
-    serverTimestamp,
-    onSnapshot
-  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
-    authDomain: "infotech-e1174.firebaseapp.com",
-    projectId: "infotech-e1174",
-    storageBucket: "infotech-e1174.firebasestorage.app",
-    messagingSenderId: "243395836512",
-    appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
+  authDomain: "infotech-e1174.firebaseapp.com",
+  projectId: "infotech-e1174",
+  storageBucket: "infotech-e1174.firebasestorage.app",
+  messagingSenderId: "243395836512",
+  appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  // ===== Page Navigation =====
-  function showPage(id){
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
+// Page navigation
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+window.showPage = showPage;
 
-  window.showPage = showPage; // make accessible from HTML onclick
-
-  // ===== Submit Form =====
-  const form = document.getElementById("orderForm");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    try {
-      await addDoc(collection(db, "orders"), {
-        name: document.getElementById("name").value,
-        mobile: document.getElementById("mobile").value,
-        message: document.getElementById("message").value,
-        createdAt: serverTimestamp()
-      });
-      document.getElementById("success").textContent = "Submitted successfully!";
-      form.reset();
-    } catch (err) {
-      alert("ERROR: " + err.message);
-    }
-  });
-
-  // ===== Admin Login & Load =====
-  window.login = async function() {
-    if(document.getElementById("adminKey").value !== "BDS2026"){
-      document.getElementById("loginMsg").textContent = "Wrong key!";
-      return;
-    }
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("adminPanel").style.display="block";
-
-    // Real-time updates
-    const ordersCol = collection(db, "orders");
-    onSnapshot(ordersCol, (snap) => {
-      const tbody = document.getElementById("data");
-      tbody.innerHTML = "";
-      snap.forEach(doc => {
-        const o = doc.data();
-        tbody.innerHTML += `
-          <tr>
-            <td>${o.name}</td>
-            <td>${o.mobile}</td>
-            <td>${o.message}</td>
-            <td>${o.createdAt?.toDate().toLocaleString() || ""}</td>
-          </tr>`;
-      });
+// Form submit
+const form = document.getElementById("orderForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  try {
+    await addDoc(collection(db,"orders"), {
+      name: document.getElementById("name").value,
+      mobile: document.getElementById("mobile").value,
+      message: document.getElementById("message").value,
+      createdAt: serverTimestamp()
     });
+    document.getElementById("success").textContent = "Submitted successfully!";
+    form.reset();
+  } catch(err){
+    alert("Error: " + err.message);
   }
-</script>
+});
 
+// Admin login & load
+window.login = function() {
+  const key = document.getElementById("adminKey").value;
+  if(key !== "BDS2026"){
+    document.getElementById("loginMsg").textContent = "Wrong key!";
+    return;
+  }
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("adminPanel").style.display = "block";
+
+  // Real-time orders
+  const ordersCol = collection(db,"orders");
+  onSnapshot(ordersCol,(snap)=>{
+    const tbody = document.getElementById("data");
+    tbody.innerHTML="";
+    snap.forEach(doc=>{
+      const o = doc.data();
+      tbody.innerHTML += `
+        <tr>
+          <td>${o.name}</td>
+          <td>${o.mobile}</td>
+          <td>${o.message}</td>
+          <td>${o.createdAt?.toDate().toLocaleString() || ""}</td>
+        </tr>`;
+    });
+  });
+}
 </script>
 
 </body>
 </html>
+
 
 
 
