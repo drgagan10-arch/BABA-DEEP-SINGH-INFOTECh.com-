@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Baba Deep Singh Infotech</title>
+<meta name="description" content="Contact Baba Deep Singh Infotech for web development services.">
+<meta name="keywords" content="Contact Web Developer, Phone, Email, Support">
+<meta name="author" content="Baba Deep Singh Infotech">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Montserrat:wght@400;600&display=swap');
+
+*{box-sizing:border-box}
+body{margin:0;font-family:'Montserrat',sans-serif;background:radial-gradient(circle at top,#1b1f3a,#050512);color:#fff;overflow-x:hidden;}
+.container{max-width:1200px;margin:auto;padding:100px 20px 40px}
+h1,h2{font-family:'Orbitron',sans-serif;color:#ffb700;text-shadow:0 0 20px #ffb700}
+nav{position:fixed;top:0;left:0;width:100%;padding:15px 30px;display:flex;justify-content:space-between;background:#050512;z-index:999}
+nav a{color:white;margin-left:25px;text-decoration:none;font-weight:600}
+nav a:hover{color:#ffb700}
+.logo{font-family:'Orbitron',sans-serif;font-size:1.6rem;color:#ffb700}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BDS INFOTECH</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="order.html">Order</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="admin.html">Admin</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Contact</h2>
+  <p>📞 +91 62806 29868</p>
+  <p>📧 drgagan.10@gmail.com</p>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
+    authDomain: "infotech-e1174.firebaseapp.com",
+    projectId: "infotech-e1174",
+    storageBucket: "infotech-e1174.firebasestorage.app",
+    messagingSenderId: "243395836512",
+    appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+</script>
+
+<script src="//code.tidio.co/dv5czpqkesrmkbifmdrklpg1nuyttoza.js" async></script>
+
+</body>
+</html>
