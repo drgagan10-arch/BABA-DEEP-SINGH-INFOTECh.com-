@@ -1,91 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baba Deep Singh Infotech | Web Design & Development</title>
-<meta name="description" content="Baba Deep Singh Infotech offers professional website design and development services.">
-<meta name="keywords" content="Web Design, Web Development, Responsive Website, UI/UX, Business Website, E-commerce, Digital Solutions">
-<meta name="author" content="Baba Deep Singh Infotech">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Montserrat:wght@400;600&display=swap');
-
-*{box-sizing:border-box}
-body{margin:0;font-family:'Montserrat',sans-serif;background:radial-gradient(circle at top,#1b1f3a,#050512);color:#fff;overflow-x:hidden;}
-.page{display:block;height:100vh;overflow:auto;padding:100px 20px 40px}
-.container{max-width:1200px;margin:auto}
-h1,h2{font-family:'Orbitron',sans-serif;color:#ffb700;text-shadow:0 0 20px #ffb700}
-.btn{padding:14px 40px;border:none;border-radius:50px;background:#ffb700;font-weight:700;cursor:pointer;box-shadow:0 0 30px #ffb700}
-.btn:hover{transform:scale(1.05)}
-nav{position:fixed;top:0;left:0;width:100%;padding:15px 30px;display:flex;justify-content:space-between;background:#050512;z-index:999}
-nav a{color:white;margin-left:25px;text-decoration:none;font-weight:600;cursor:pointer}
-nav a:hover{color:#ffb700}
-.logo{font-family:'Orbitron',sans-serif;font-size:1.6rem;color:#ffb700}
-.hero{text-align:center;margin-top:40px}
-.home-text{margin-top:50px;line-height:1.9;font-size:1.1rem;background:rgba(15,15,40,.85);padding:35px;border-radius:20px;box-shadow:0 0 35px rgba(255,183,0,.3)}
-input,textarea{width:100%;padding:12px;margin:10px 0 20px;border-radius:10px;border:none}
-input:focus,textarea:focus{outline:none;box-shadow:0 0 15px #ffb700}
-.admin-header{background:#ffb700;color:#050512;padding:20px;text-align:center;font-family:'Orbitron',sans-serif;font-size:1.6rem}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #ffb700;padding:10px}
-th{background:#ffb700;color:#050512}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baba Deep Singh Infotech | Home</title>
+  <meta name="description" content="Web design, development, SEO, and digital marketing. Start your project today!">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="js/main.js"></script>
+  <!-- Tawk.to Chat -->
+  <script>var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/YOUR_TAWKTO_PROPERTY_ID/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script>
 </head>
 <body>
+<div id="loader"><div class="spinner"></div></div>
 
-<nav>
-  <div class="logo">BDS INFOTECH</div>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="order.html">Order</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-    <a href="terms.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="admin.html">Admin</a>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="container hero">
-  <h1>Website Designing & Development</h1>
-  <p>High-quality • Modern • Business-focused</p>
-  <a href="order.html"><button class="btn">Start Project</button></a>
+<main>
+  <section class="hero" style="background: linear-gradient(135deg, var(--primary-light), var(--bg)); padding:4rem 0;">
+    <div class="container hero-grid" style="display:flex; gap:2rem; flex-wrap:wrap;">
+      <div style="flex:1">
+        <h1>Innovative <span style="color:var(--primary)">Web Solutions</span></h1>
+        <p>We build fast, secure, and beautiful websites that drive results.</p>
+        <button class="btn" onclick="startProject()"><i class="fab fa-whatsapp"></i> Start Project</button>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+      <div style="flex:1"><img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600" style="width:100%; border-radius:1rem;"></div>
+    </div>
+  </section>
 
-  <div class="home-text">
-    <p>Professional web design & development services.</p>
-    <p>Modern UI/UX, responsive layouts, scalable solutions.</p>
-    <p>Helping brands grow digitally with confidence.</p>
-  </div>
-</div>
+  <section class="container" style="padding:3rem 0">
+    <h2>Testimonials</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Great service! Increased our sales by 200%.</p><div class="stars">★★★★★</div><strong>- Rohan S.</strong></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Professional team, delivered ahead of schedule.</p><div class="stars">★★★★★</div><strong>- Priya M.</strong></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Excellent SEO results, top ranking now!</p><div class="stars">★★★★☆</div><strong>- Ankit K.</strong></div>
+    </div>
+  </section>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    onSnapshot,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+  <section class="container" style="padding:3rem 0">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card"><h3>Basic</h3><div class="price">$499</div><p>5 pages, responsive, contact form</p><button class="btn" onclick="startProject()">Start</button></div>
+      <div class="pricing-card featured"><h3>Pro</h3><div class="price">$999</div><p>10 pages, CMS, SEO optimized</p><button class="btn" onclick="startProject()">Start</button></div>
+      <div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><p>E-commerce, custom features</p><button class="btn" onclick="startProject()">Contact</button></div>
+    </div>
+  </section>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
-    authDomain: "infotech-e1174.firebaseapp.com",
-    projectId: "infotech-e1174",
-    storageBucket: "infotech-e1174.firebasestorage.app",
-    messagingSenderId: "243395836512",
-    appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
-  };
+  <section class="container" style="padding:3rem 0">
+    <h2>Newsletter</h2>
+    <form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Your email" required><button type="submit" class="btn">Subscribe</button></form>
+  </section>
+</main>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+<footer class="footer">
+  <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+</footer>
 
-  // Firebase is initialized but form submission only works on order.html
-  // Admin functions only work on admin.html
-</script>
+<a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-<script src="//code.tidio.co/dv5czpqkesrmkbifmdrklpg1nuyttoza.js" async></script>
-
+<script>document.querySelector(".mobile-menu-btn").onclick = () => document.querySelector(".nav-links").classList.toggle("active");</script>
 </body>
 </html>
