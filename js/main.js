@@ -2,14 +2,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-// Firebase Config (User Provided)
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
-  authDomain: "infotech-e1174.firebasestorage.app",
-  projectId: "infotech-e1174",
-  storageBucket: "infotech-e1174.firebasestorage.app",
-  messagingSenderId: "243395836512",
-  appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
+  apiKey: "AIzaSyAbeKLO-fq6vwjx8Fyd3ONa_WdIVTi58k4",
+  authDomain: "bdsifotech.firebaseapp.com",
+  projectId: "bdsifotech",
+  storageBucket: "bdsifotech.firebasestorage.app",
+  messagingSenderId: "487791641568",
+  appId: "1:487791641568:web:55df83e7668da810e62185"
 };
 
 // Initialize Firebase
