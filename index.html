@@ -3,78 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baba Deep Singh Infotech | Home</title>
-  <meta name="description" content="Web design, development, SEO, and digital marketing. Start your project today!">
+  <title>Baba Deep Singh Infotech | Web Design & Development</title>
+  <meta name="description" content="Professional web design, development, SEO, and digital marketing services. Start your project today!">
+  <meta name="keywords" content="web design, web development, SEO, digital marketing, infotech, baba deep singh">
+  <meta name="author" content="Baba Deep Singh Infotech">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Baba Deep Singh Infotech">
+  <meta property="og:description" content="Professional web solutions for your business. Get a free consultation today!">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200">
+  <meta property="og:url" content="https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECh.com-/">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="module" src="js/main.js"></script>
-  <!-- Tawk.to Chat -->
-  <script>var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/YOUR_TAWKTO_PROPERTY_ID/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script>
 </head>
 <body>
+
 <div id="loader"><div class="spinner"></div></div>
 
 <nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
     <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-    <button class="theme-toggle"><i class="fas fa-moon"></i></button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="admin.html">Admin</a></li>
     </ul>
   </div>
 </nav>
 
 <main>
-  <section class="hero" style="background: linear-gradient(135deg, var(--primary-light), var(--bg)); padding:4rem 0;">
-    <div class="container hero-grid" style="display:flex; gap:2rem; flex-wrap:wrap;">
-      <div style="flex:1">
-        <h1>Innovative <span style="color:var(--primary)">Web Solutions</span></h1>
-        <p>We build fast, secure, and beautiful websites that drive results.</p>
-        <button class="btn" onclick="startProject()"><i class="fab fa-whatsapp"></i> Start Project</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Innovative <span style="color: var(--green-500);">Web Solutions</span> for Your Business</h1>
+        <p>We craft high-performance websites, e-commerce stores, and custom web apps that drive growth and deliver results.</p>
+        <button class="btn" onclick="startProject()"><i class="fab fa-whatsapp"></i> Start Project →</button>
         <a href="contact.html" class="btn btn-outline">Contact Us</a>
       </div>
-      <div style="flex:1"><img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600" style="width:100%; border-radius:1rem;"></div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600" alt="Web development team" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <section class="container" style="padding:3rem 0">
-    <h2>Testimonials</h2>
+  <!-- Services Section -->
+  <div class="container section" style="padding: 4rem 0;">
+    <h2>Our Core Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>Web Design</h3>
+        <p>Modern, responsive designs that captivate your audience and enhance user experience.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Fast, secure, and scalable web applications built with cutting-edge technologies.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>SEO & Marketing</h3>
+        <p>Rank higher on search engines and attract more customers with proven strategies.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="container section" style="padding: 2rem 0 4rem 0;">
+    <h2>What Our Clients Say</h2>
     <div class="testimonial-slider">
-      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Great service! Increased our sales by 200%.</p><div class="stars">★★★★★</div><strong>- Rohan S.</strong></div>
-      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Professional team, delivered ahead of schedule.</p><div class="stars">★★★★★</div><strong>- Priya M.</strong></div>
-      <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>Excellent SEO results, top ranking now!</p><div class="stars">★★★★☆</div><strong>- Ankit K.</strong></div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>Great service! Increased our online sales by over 200%. Highly recommended!</p>
+        <div class="stars">★★★★★</div>
+        <strong>- Rohan Sharma</strong>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>Professional team, delivered ahead of schedule. The website looks amazing!</p>
+        <div class="stars">★★★★★</div>
+        <strong>- Priya Mehta</strong>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-quote-left"></i>
+        <p>Excellent SEO results, we're now ranking on the first page for key terms!</p>
+        <div class="stars">★★★★☆</div>
+        <strong>- Ankit Kumar</strong>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section class="container" style="padding:3rem 0">
-    <h2>Pricing Plans</h2>
+  <!-- Pricing -->
+  <div class="container section" style="padding: 2rem 0 4rem 0;">
+    <h2>Choose Your Plan</h2>
     <div class="pricing-grid">
-      <div class="pricing-card"><h3>Basic</h3><div class="price">$499</div><p>5 pages, responsive, contact form</p><button class="btn" onclick="startProject()">Start</button></div>
-      <div class="pricing-card featured"><h3>Pro</h3><div class="price">$999</div><p>10 pages, CMS, SEO optimized</p><button class="btn" onclick="startProject()">Start</button></div>
-      <div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><p>E-commerce, custom features</p><button class="btn" onclick="startProject()">Contact</button></div>
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <div class="price">$499</div>
+        <p>5 pages, responsive design, contact form, basic SEO setup</p>
+        <button class="btn" onclick="startProject()" style="margin-top: 1rem;">Get Started</button>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Pro</h3>
+        <div class="price">$999</div>
+        <p>10 pages, CMS integration, advanced SEO, 3 months support</p>
+        <button class="btn" onclick="startProject()" style="margin-top: 1rem;">Get Started</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p>Full e-commerce solution, custom features, 24/7 priority support</p>
+        <button class="btn" onclick="startProject()" style="margin-top: 1rem;">Contact Us</button>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section class="container" style="padding:3rem 0">
-    <h2>Newsletter</h2>
-    <form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Your email" required><button type="submit" class="btn">Subscribe</button></form>
-  </section>
+  <!-- Newsletter -->
+  <div class="container section" style="padding: 2rem 0 4rem 0; text-align: center;">
+    <h2>Stay Updated</h2>
+    <p style="margin-bottom: 1.5rem;">Subscribe to our newsletter for the latest updates and offers.</p>
+    <form id="newsletterForm" style="max-width: 500px; margin: 0 auto; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+      <input type="email" id="newsletterEmail" placeholder="Your email address" required style="flex: 1; padding: 0.75rem; border: 1px solid var(--green-100); border-radius: 0.5rem;">
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+  </div>
 </main>
 
 <footer class="footer">
-  <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+  <div class="container">
+    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.875rem;">📍 Amritsar, Punjab, India</p>
+  </div>
 </footer>
 
 <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-<script>document.querySelector(".mobile-menu-btn").onclick = () => document.querySelector(".nav-links").classList.toggle("active");</script>
+<!-- JSON-LD Schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Baba Deep Singh Infotech",
+  "url": "https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECh.com-/",
+  "logo": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+918221826243",
+    "contactType": "customer service",
+    "email": "drgagan.10@gmail.com"
+  },
+  "sameAs": ["https://wa.me/918221826243"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Amritsar",
+    "addressRegion": "Punjab",
+    "addressCountry": "India"
+  }
+}
+</script>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const navLinksEl = document.querySelector(".nav-links");
+  if (menuBtn && navLinksEl) {
+    menuBtn.addEventListener("click", () => {
+      navLinksEl.classList.toggle("active");
+    });
+  }
+</script>
 </body>
 </html>
