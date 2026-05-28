@@ -4,52 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel | Baba Deep Singh Infotech</title>
+  <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
-<div id="loader"><div class="spinner"></div></div>
 
-<nav class="navbar">...same as index, active Admin...</nav>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admin.html" class="active">Admin</a></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container section">
-  <div id="adminLogin" class="admin-login">
+  <h1>Admin Panel</h1>
+  
+  <div id="adminLogin" style="max-width: 400px; margin: 2rem auto; text-align: center;">
     <h2>Admin Login</h2>
-    <input type="password" id="adminPassword" placeholder="Enter password" style="width:100%; padding:0.75rem;">
-    <button id="loginBtn" class="btn" style="margin-top:1rem;">Login</button>
+    <input type="password" id="adminPassword" placeholder="Enter password" style="width: 100%; padding: 0.75rem; margin: 1rem 0; border: 1px solid var(--green-100); border-radius: 0.5rem;">
+    <button id="loginBtn" class="btn">Login</button>
   </div>
 
-  <div id="adminDashboard" style="display:none;">
+  <div id="adminDashboard" style="display: none;">
     <h2>Contact Messages</h2>
-    <div id="messagesList"></div>
-
-    <h2>Add New Blog Post</h2>
-    <form id="addBlogForm">
-      <input type="text" id="blogTitle" placeholder="Title" required><br>
-      <textarea id="blogContent" placeholder="Full content" rows="5"></textarea><br>
-      <input type="text" id="blogImage" placeholder="Image URL" value="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600"><br>
-      <input type="text" id="blogExcerpt" placeholder="Short excerpt"><br>
-      <button type="submit" class="btn">Add Post</button>
-    </form>
-
-    <h2>Manage Blog Posts</h2>
-    <div id="blogListAdmin"></div>
-
-    <h2>Add Portfolio Item</h2>
-    <form id="addPortfolioForm">
-      <input type="text" id="portTitle" placeholder="Title"><br>
-      <select id="portCategory"><option value="web">Web</option><option value="app">App</option><option value="branding">Branding</option></select><br>
-      <input type="text" id="portImage" placeholder="Image URL"><br>
-      <textarea id="portDesc" placeholder="Description"></textarea><br>
-      <button type="submit" class="btn">Add Portfolio</button>
-    </form>
-    <div id="portfolioListAdmin"></div>
+    <div id="messagesList" style="margin-bottom: 2rem;"></div>
+    
+    <h2>Newsletter Subscribers</h2>
+    <div id="subscribersList" style="margin-bottom: 2rem;"></div>
   </div>
 </main>
 
-<footer class="footer">...</footer>
-<script>/* mobile menu */</script>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+  </div>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEtw-mrf6PPOaCxtpEJeL8swkG0GgQ8Jc",
+    authDomain: "infotech-e1174.firebasestorage.app",
+    projectId: "infotech-e1174",
+    storageBucket: "infotech-e1174.firebasestorage.app",
+    messagingSenderId: "243395836512",
+    appId: "1:243395836512:web:3d0705c6bcaf0fe452a105"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const loginBtn = document.getElementById("loginBtn");
+  if (loginBtn) {
+    loginBtn.addEventListener("click", async () => {
+      const password = document.getElementById("adminPassword").value;
+      if (password === "admin123") {
+        document.getElementById("adminLogin").style.display = "none";
+        document.getElementById("adminDashboard").style.display = "block";
+        await loadMessages();
+        await loadSubscribers();
+      } else {
+        alert("Incorrect password. Access denied.");
+      }
+    });
+  }
+
+  async function loadMessages() {
+    const messagesDiv = document.getElementById("messagesList");
+    messagesDiv.innerHTML = '<p>Loading messages...</p>';
+    try {
+      const q = query(collection(db, "contactMessages"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        messagesDiv.innerHTML = '<p>No messages yet.</p>';
+        return;
+      }
+      messagesDiv.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Unknown date";
+        const card = document.createElement("div");
+        card.className = "message-card";
+        card.innerHTML = `
+          <strong>${escapeHtml(data.name)}</strong> (${escapeHtml(data.email)})<br>
+          <small>${date}</small>
+          <p style="margin-top: 0.5rem;">${escapeHtml(data.message)}</p>
+        `;
+        messagesDiv.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading messages:", error);
+      messagesDiv.innerHTML = '<p>Error loading messages. Check console.</p>';
+    }
+  }
+
+  async function loadSubscribers() {
+    const subscribersDiv = document.getElementById("subscribersList");
+    subscribersDiv.innerHTML = '<p>Loading subscribers...</p>';
+    try {
+      const q = query(collection(db, "newsletter"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        subscribersDiv.innerHTML = '<p>No subscribers yet.</p>';
+        return;
+      }
+      subscribersDiv.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Unknown date";
+        const card = document.createElement("div");
+        card.className = "message-card";
+        card.innerHTML = `
+          <strong>${escapeHtml(data.email)}</strong><br>
+          <small>Subscribed: ${date}</small>
+        `;
+        subscribersDiv.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading subscribers:", error);
+      subscribersDiv.innerHTML = '<p>Error loading subscribers. Check console.</p>';
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  // Mobile menu
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+</script>
 </body>
 </html>
