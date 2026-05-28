@@ -1,1 +1,3 @@
-
+User-agent: *
+Allow: /
+Sitemap: https://drgagan10-arch.github.io/BABA-DEEP-SINGH-INFOTECh.com-/sitemap.xml
