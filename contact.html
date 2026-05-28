@@ -1,29 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>...</head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Baba Deep Singh Infotech</title>
+  <meta name="description" content="Get in touch with Baba Deep Singh Infotech for web design, development, and digital marketing services.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
 <body>
-  <nav>...</nav>
-  <main class="container section">
-    <h1>Get In Touch</h1>
-    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-      <div style="flex:1">
-        <form id="contactForm">
-          <div class="form-group"><label>Name</label><input type="text" id="name" required></div>
-          <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
-          <div class="form-group"><label>Message</label><textarea id="message" rows="5" required></textarea></div>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-      <div style="flex:1">
-        <h3>Contact Info</h3>
-        <p><i class="fas fa-phone"></i> +91 8221826243</p>
-        <p><i class="fas fa-envelope"></i> info@babadeepsinghinfotech.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Punjab, India</p>
-        <iframe src="https://maps.google.com/maps?q=Punjab&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200" style="border:0; border-radius:1rem;" allowfullscreen></iframe>
+
+<div id="loader"><div class="spinner"></div></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container section">
+  <h1>Get In Touch</h1>
+  <div class="contact-grid">
+    <div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+
+    <div>
+      <h3>Contact Information</h3>
+      <p style="margin-bottom: 1rem;"><i class="fas fa-phone" style="color: var(--green-500); width: 30px;"></i> +91 8221826243</p>
+      <p style="margin-bottom: 1rem;"><i class="fas fa-envelope" style="color: var(--green-500); width: 30px;"></i> drgagan.10@gmail.com</p>
+      <p style="margin-bottom: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--green-500); width: 30px;"></i> Amritsar, Punjab, India</p>
+      
+      <h3 style="margin-top: 1.5rem;">Find Us</h3>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54294.7547170601!2d74.800151!3d31.634022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0xeea2604bee5104c5!2sAmritsar%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
       </div>
     </div>
-  </main>
-  <footer>...</footer>
-  <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+  </div>
+</footer>
+
+<a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Initialize EmailJS - REPLACE WITH YOUR CREDENTIALS
+  (function() {
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // ← PASTE YOUR PUBLIC KEY HERE
+  })();
+
+  // Contact Form Handler
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+
+      const templateParams = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      };
+
+      emailjs.send(
+        "YOUR_EMAILJS_SERVICE_ID",  // ← PASTE YOUR SERVICE ID
+        "YOUR_EMAILJS_TEMPLATE_ID", // ← PASTE YOUR TEMPLATE ID
+        templateParams
+      ).then(function(response) {
+        alert("✅ Message sent successfully! We'll get back to you soon.");
+        contactForm.reset();
+      }, function(error) {
+        console.error("EmailJS Error:", error);
+        alert("❌ Failed to send message. Please try again later.");
+      }).finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
+    });
+  }
+</script>
 </body>
 </html>
