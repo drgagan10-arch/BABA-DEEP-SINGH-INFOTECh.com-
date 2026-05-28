@@ -4,35 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services | Baba Deep Singh Infotech</title>
-  <meta name="description" content="Web design, development, SEO, e-commerce, and digital marketing services.">
+  <meta name="description" content="Professional web design, development, SEO, e-commerce, and digital marketing services for your business growth.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="module" src="js/main.js"></script>
-  <script>var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/YOUR_TAWKTO_PROPERTY_ID/default';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script>
 </head>
 <body>
+
 <div id="loader"><div class="spinner"></div></div>
 
-<nav class="navbar">...same as above... (copy from about.html, change active class to services)</nav>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container section">
-  <h1>What We Offer</h1>
+  <h1 style="text-align: center;">What We Offer</h1>
   <div class="services-grid">
-    <div class="service-card"><i class="fas fa-paint-brush service-icon"></i><h3>Web Design</h3><p>Modern, responsive designs that captivate.</p></div>
-    <div class="service-card"><i class="fas fa-code service-icon"></i><h3>Web Development</h3><p>Fast, secure, scalable web apps.</p></div>
-    <div class="service-card"><i class="fas fa-search service-icon"></i><h3>SEO & Marketing</h3><p>Rank #1 on Google, drive traffic.</p></div>
-    <div class="service-card"><i class="fas fa-shopping-cart service-icon"></i><h3>E‑commerce</h3><p>Shopify, WooCommerce, custom solutions.</p></div>
-    <div class="service-card"><i class="fas fa-chart-line service-icon"></i><h3>Analytics & Reporting</h3><p>Data-driven decisions.</p></div>
-    <div class="service-card"><i class="fas fa-cloud-upload-alt service-icon"></i><h3>Cloud Hosting</h3><p>AWS, Google Cloud, fast deployment.</p></div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+      <h3>Web Design</h3>
+      <p>Modern, responsive designs that captivate your audience and deliver exceptional user experiences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-code"></i></div>
+      <h3>Web Development</h3>
+      <p>Fast, secure, and scalable web applications built with the latest technologies and best practices.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-search"></i></div>
+      <h3>SEO Optimization</h3>
+      <p>Rank higher on Google, drive organic traffic, and grow your online presence with proven SEO strategies.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+      <h3>E-Commerce Solutions</h3>
+      <p>Custom online stores with secure payments, inventory management, and seamless user experience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Digital Marketing</h3>
+      <p>Data-driven marketing campaigns that increase brand awareness and drive conversions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <h3>Cloud Hosting</h3>
+      <p>Fast, reliable, and secure hosting solutions on AWS, Google Cloud, and other top platforms.</p>
+    </div>
   </div>
-  <div style="text-align:center; margin-top:2rem;">
+  <div style="text-align: center; margin-top: 2rem;">
     <button class="btn" onclick="startProject()"><i class="fab fa-whatsapp"></i> Start a Project</button>
   </div>
 </main>
 
-<footer class="footer">...</footer>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+  </div>
+</footer>
+
 <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-<script>/* same mobile menu script */</script>
+
+<script>
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+</script>
 </body>
 </html>
