@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | Baba Deep Singh Infotech</title>
-  <meta name="description" content="Get in touch with Baba Deep Singh Infotech for web design, development, and digital marketing services.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,17 +51,11 @@
 
     <div>
       <h3>Contact Information</h3>
-      <p style="margin-bottom: 1rem;"><i class="fas fa-phone" style="color: var(--green-500); width: 30px;"></i> +91 8221826243</p>
-      <p style="margin-bottom: 1rem;"><i class="fas fa-envelope" style="color: var(--green-500); width: 30px;"></i> drgagan.10@gmail.com</p>
-      <p style="margin-bottom: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--green-500); width: 30px;"></i> Amritsar, Punjab, India</p>
-      
-      <h3 style="margin-top: 1.5rem;">Find Us</h3>
+      <p><i class="fas fa-phone"></i> +91 8221826243</p>
+      <p><i class="fas fa-envelope"></i> drgagan.10@gmail.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> Amritsar, Punjab, India</p>
       <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54294.7547170601!2d74.800151!3d31.634022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0xeea2604bee5104c5!2sAmritsar%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54294.7547170601!2d74.800151!3d31.634022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0xeea2604bee5104c5!2sAmritsar%2C%20Punjab!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -77,7 +70,7 @@
 <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // Mobile menu
+  // Mobile menu toggle
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const navLinks = document.querySelector(".nav-links");
   if (menuBtn && navLinks) {
@@ -86,42 +79,57 @@
     });
   }
 
-  // Initialize EmailJS - REPLACE WITH YOUR CREDENTIALS
-  (function() {
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // ← PASTE YOUR PUBLIC KEY HERE
-  })();
+  // Initialize EmailJS with your Public Key
+  // (You need to replace 'YOUR_EMAILJS_PUBLIC_KEY' with your actual public key)
+  emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
 
-  // Contact Form Handler
+  // Contact form handler (sends email + saves to Firestore)
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    contactForm.addEventListener("submit", function(e) {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
       submitBtn.disabled = true;
 
-      const templateParams = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value
-      };
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
 
-      emailjs.send(
-        "YOUR_EMAILJS_SERVICE_ID",  // ← PASTE YOUR SERVICE ID
-        "YOUR_EMAILJS_TEMPLATE_ID", // ← PASTE YOUR TEMPLATE ID
-        templateParams
-      ).then(function(response) {
+      try {
+        // 1. Send email via EmailJS
+        await emailjs.send(
+          "service_bjm8g8n",  // Your Service ID
+          "YOUR_EMAILJS_TEMPLATE_ID",  // ← You must create a template and put its ID here
+          { name, email, message }
+        );
+
+        // 2. Save to Firestore (for admin panel)
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js");
+        const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js");
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyAbeKLO-fq6vwjx8Fyd3ONa_WdIVTi58k4",
+          authDomain: "bdsifotech.firebaseapp.com",
+          projectId: "bdsifotech",
+          storageBucket: "bdsifotech.firebasestorage.app",
+          messagingSenderId: "487791641568",
+          appId: "1:487791641568:web:55df83e7668da810e62185"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        await addDoc(collection(db, "contactMessages"), { name, email, message, timestamp: serverTimestamp() });
+
         alert("✅ Message sent successfully! We'll get back to you soon.");
         contactForm.reset();
-      }, function(error) {
-        console.error("EmailJS Error:", error);
-        alert("❌ Failed to send message. Please try again later.");
-      }).finally(() => {
+      } catch (error) {
+        console.error("Error:", error);
+        alert("❌ Failed to send. Error: " + error.message);
+      } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-      });
+      }
     });
   }
 </script>
