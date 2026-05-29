@@ -79,11 +79,9 @@
     });
   }
 
-  // Initialize EmailJS with your Public Key
-  // (You need to replace 'YOUR_EMAILJS_PUBLIC_KEY' with your actual public key)
-  emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+  // Initialize EmailJS with your public key
+  emailjs.init("rlXeEwQavySY-vgsp");
 
-  // Contact form handler (sends email + saves to Firestore)
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
@@ -98,14 +96,14 @@
       const message = document.getElementById("message").value;
 
       try {
-        // 1. Send email via EmailJS
+        // Send email via EmailJS (to your Gmail)
         await emailjs.send(
-          "service_bjm8g8n",  // Your Service ID
-          "YOUR_EMAILJS_TEMPLATE_ID",  // ← You must create a template and put its ID here
+          "service_bjm8g8n",
+          "template_ohu9jyy",
           { name, email, message }
         );
 
-        // 2. Save to Firestore (for admin panel)
+        // Also save to Firestore (for admin panel)
         const { initializeApp } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js");
         const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js");
         
