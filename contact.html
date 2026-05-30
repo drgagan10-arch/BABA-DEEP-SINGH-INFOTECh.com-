@@ -69,16 +69,28 @@
 
 <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
+<!-- Improved Hamburger Menu Script (closes after link click) -->
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.querySelector(".mobile-menu-btn");
-  const navLinks = document.querySelector(".nav-links");
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+  (function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (!menuBtn || !navLinks) return;
+    
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
     });
-  }
+    
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  })();
+</script>
 
+<!-- EmailJS + Firestore Contact Handler -->
+<script>
   // Initialize EmailJS with your public key
   emailjs.init("rlXeEwQavySY-vgsp");
 
@@ -132,4 +144,4 @@
   }
 </script>
 </body>
-</html>
+  </html>
