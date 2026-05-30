@@ -514,3 +514,39 @@ h3 {
     transform: scale(1);
   }
 }
+/* ===== HAMBURGER MENU FIX (add at the end of your CSS) ===== */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: var(--green-700);
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 80%;
+    height: calc(100vh - 70px);
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    gap: 1.5rem;
+    transition: left 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+}
