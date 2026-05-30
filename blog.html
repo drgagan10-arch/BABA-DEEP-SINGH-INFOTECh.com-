@@ -1,15 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>... (similar meta, css, js) ...</head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Baba Deep Singh Infotech</title>
+  <meta name="description" content="Read the latest articles on web design, development, SEO, and digital marketing from Baba Deep Singh Infotech.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="js/main.js"></script>
+</head>
 <body>
-  <nav>...</nav>
-  <main class="container section">
-    <h1>Latest Blogs</h1>
-    <div id="blogList">
-      <!-- skeleton will appear here -->
-    </div>
-  </main>
-  <footer>...</footer>
-  <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<div id="loader"><div class="spinner"></div></div>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">🟢 BABA DEEP SINGH INFOTECH</a>
+    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container section">
+  <h1>Latest Blogs</h1>
+  <div id="blogList">
+    <!-- Skeleton loaders will appear here -->
+    <div class="skeleton-card" style="background: #e5e7eb; border-radius: 1rem; height: 280px; margin-bottom: 1.5rem;"></div>
+    <div class="skeleton-card" style="background: #e5e7eb; border-radius: 1rem; height: 280px; margin-bottom: 1.5rem;"></div>
+    <div class="skeleton-card" style="background: #e5e7eb; border-radius: 1rem; height: 280px; margin-bottom: 1.5rem;"></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
+  </div>
+</footer>
+
+<a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Mobile Hamburger Menu Script -->
+<script>
+  (function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (!menuBtn || !navLinks) return;
+    
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+    });
+    
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  })();
+</script>
+
+<!-- Firestore Blog Loader -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAbeKLO-fq6vwjx8Fyd3ONa_WdIVTi58k4",
+    authDomain: "bdsifotech.firebaseapp.com",
+    projectId: "bdsifotech",
+    storageBucket: "bdsifotech.firebasestorage.app",
+    messagingSenderId: "487791641568",
+    appId: "1:487791641568:web:55df83e7668da810e62185"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const blogContainer = document.getElementById("blogList");
+
+  async function loadBlogs() {
+    try {
+      const q = query(collection(db, "blogPosts"), orderBy("date", "desc"));
+      const querySnapshot = await getDocs(q);
+      
+      if (querySnapshot.empty) {
+        blogContainer.innerHTML = '<p style="text-align:center;">No blog posts yet. Check back soon!</p>';
+        return;
+      }
+      
+      let html = '';
+      querySnapshot.forEach((doc) => {
+        const post = doc.data();
+        const date = post.date ? post.date.toDate().toLocaleDateString() : 'Recent';
+        const excerpt = post.excerpt || (post.content ? post.content.substring(0, 120) + '...' : 'Read more...');
+        
+        html += `
+          <div class="blog-card" style="background: var(--surface); border-radius: 1rem; overflow: hidden; margin-bottom: 2rem; box-shadow: var(--shadow); transition: var(--transition);">
+            ${post.image ? `<img src="${post.image}" alt="${escapeHtml(post.title)}" style="width:100%; height:240px; object-fit:cover;">` : ''}
+            <div style="padding: 1.5rem;">
+              <h3 style="margin-bottom: 0.5rem;">${escapeHtml(post.title)}</h3>
+              <p style="color: var(--text-light); margin-bottom: 1rem;"><i class="fas fa-calendar-alt"></i> ${date}</p>
+              <p>${escapeHtml(excerpt)}</p>
+              <a href="blog-post.html?id=${doc.id}" class="btn btn-outline" style="margin-top: 1rem; display: inline-block;">Read More →</a>
+            </div>
+          </div>
+        `;
+      });
+      blogContainer.innerHTML = html;
+    } catch (error) {
+      console.error("Error loading blogs:", error);
+      blogContainer.innerHTML = '<p style="color: red;">Failed to load blog posts. Please try again later.</p>';
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  loadBlogs();
+</script>
+
 </body>
 </html>
