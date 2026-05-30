@@ -147,15 +147,25 @@
 }
 </script>
 
+<!-- Improved Hamburger Menu Script (closes after link click) -->
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.querySelector(".mobile-menu-btn");
-  const navLinksEl = document.querySelector(".nav-links");
-  if (menuBtn && navLinksEl) {
-    menuBtn.addEventListener("click", () => {
-      navLinksEl.classList.toggle("active");
+  (function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (!menuBtn || !navLinks) return;
+    
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
     });
-  }
+    
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  })();
 </script>
+
 </body>
-</html>
+      </html>
