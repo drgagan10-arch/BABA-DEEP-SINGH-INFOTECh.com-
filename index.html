@@ -147,25 +147,42 @@
 }
 </script>
 
-<!-- Improved Hamburger Menu Script (closes after link click) -->
 <script>
+  // Force hamburger menu to work on mobile
   (function() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    if (!menuBtn || !navLinks) return;
-    
-    menuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('active');
-    });
-    
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    function initMenu() {
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      if (!menuBtn || !navLinks) {
+        console.log('Menu elements not found');
+        return;
+      }
+      // Remove any existing listener to avoid duplicates
+      const newBtn = menuBtn.cloneNode(true);
+      menuBtn.parentNode.replaceChild(newBtn, menuBtn);
+      newBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        console.log('Menu toggled', navLinks.classList.contains('active'));
       });
-    });
+      // Close when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+    // Run after DOM ready and again after a short delay (for dynamic content)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+      initMenu();
+    }
+    setTimeout(initMenu, 500);
   })();
-</script>
+      </script>
+
 
 </body>
       </html>
