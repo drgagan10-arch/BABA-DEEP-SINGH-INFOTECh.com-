@@ -4,54 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel | Baba Deep Singh Infotech</title>
-  <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    .admin-section {
-      background: var(--surface);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-    }
-    .admin-section h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-    .admin-form input, .admin-form textarea, .admin-form select {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      background: var(--bg);
-      color: var(--text);
-    }
-    .item-list {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    .item-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .delete-btn {
-      background: #ef4444;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-    .delete-btn:hover { background: #dc2626; }
+    .admin-section { background: var(--surface); border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow); }
+    .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid var(--border); border-radius: 0.5rem; background: var(--bg); color: var(--text); }
+    .item-card { background: var(--bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .delete-btn { background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; }
+    .error-text { color: #ef4444; }
   </style>
 </head>
 <body>
@@ -67,6 +28,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="admin.html" class="active">Admin</a></li>
     </ul>
@@ -78,74 +40,38 @@
   
   <div id="adminLogin" style="max-width: 400px; margin: 2rem auto; text-align: center;">
     <h2>Admin Login</h2>
-    <input type="password" id="adminPassword" placeholder="Enter password" style="width: 100%; padding: 0.75rem; margin: 1rem 0; border: 1px solid var(--green-100); border-radius: 0.5rem;">
-    <button id="loginBtn" class="btn">Login</button>
+    <input type="password" id="adminPassword" placeholder="Enter password" style="width: 100%; padding: 0.75rem;">
+    <button id="loginBtn" class="btn" style="margin-top:1rem;">Login</button>
   </div>
 
   <div id="adminDashboard" style="display: none;">
-    <!-- Contact Messages -->
-    <div class="admin-section">
-      <h2>📬 Contact Messages</h2>
-      <div id="messagesList"></div>
-    </div>
-
-    <!-- Newsletter Subscribers -->
-    <div class="admin-section">
-      <h2>📧 Newsletter Subscribers</h2>
-      <div id="subscribersList"></div>
-    </div>
-
-    <!-- Add Blog Post -->
-    <div class="admin-section">
-      <h2>✍️ Add New Blog Post</h2>
+    <div class="admin-section"><h2>📬 Contact Messages</h2><div id="messagesList">Loading...</div></div>
+    <div class="admin-section"><h2>📧 Newsletter Subscribers</h2><div id="subscribersList">Loading...</div></div>
+    <div class="admin-section"><h2>✍️ Add New Blog Post</h2>
       <form id="addBlogForm" class="admin-form">
-        <input type="text" id="blogTitle" placeholder="Post Title" required>
-        <textarea id="blogContent" rows="6" placeholder="Full content (HTML supported)"></textarea>
-        <input type="text" id="blogImage" placeholder="Image URL (e.g., https://images.unsplash.com/...)" value="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600">
-        <input type="text" id="blogExcerpt" placeholder="Short excerpt (max 150 chars)">
-        <button type="submit" class="btn">➕ Add Post</button>
+        <input type="text" id="blogTitle" placeholder="Title" required>
+        <textarea id="blogContent" rows="5" placeholder="Full content (HTML allowed)"></textarea>
+        <input type="text" id="blogImage" placeholder="Image URL" value="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600">
+        <input type="text" id="blogExcerpt" placeholder="Short excerpt">
+        <button type="submit" class="btn">Add Post</button>
       </form>
     </div>
-
-    <!-- Manage Blog Posts -->
-    <div class="admin-section">
-      <h2>📝 Manage Blog Posts</h2>
-      <div id="blogListAdmin" class="item-list"></div>
-    </div>
-
-    <!-- Add Portfolio Item -->
-    <div class="admin-section">
-      <h2>🖼️ Add Portfolio Item</h2>
+    <div class="admin-section"><h2>📝 Manage Blog Posts</h2><div id="blogListAdmin">Loading...</div></div>
+    <div class="admin-section"><h2>🖼️ Add Portfolio Item</h2>
       <form id="addPortfolioForm" class="admin-form">
-        <input type="text" id="portTitle" placeholder="Project Title" required>
-        <select id="portCategory" required>
-          <option value="web">Web</option>
-          <option value="app">App</option>
-          <option value="branding">Branding</option>
-        </select>
+        <input type="text" id="portTitle" placeholder="Title" required>
+        <select id="portCategory"><option value="web">Web</option><option value="app">App</option><option value="branding">Branding</option></select>
         <input type="text" id="portImage" placeholder="Image URL" required>
-        <textarea id="portDesc" rows="3" placeholder="Short description"></textarea>
-        <button type="submit" class="btn">➕ Add Portfolio Item</button>
+        <textarea id="portDesc" placeholder="Description"></textarea>
+        <button type="submit" class="btn">Add Portfolio</button>
       </form>
     </div>
-
-    <!-- Manage Portfolio Items -->
-    <div class="admin-section">
-      <h2>🎯 Manage Portfolio Items</h2>
-      <div id="portfolioListAdmin" class="item-list"></div>
-    </div>
+    <div class="admin-section"><h2>🎯 Manage Portfolio Items</h2><div id="portfolioListAdmin">Loading...</div></div>
   </div>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <p>&copy; 2025 Baba Deep Singh Infotech. All rights reserved.</p>
-  </div>
-</footer>
+<footer class="footer"><div class="container"><p>&copy; 2025 Baba Deep Singh Infotech</p></div></footer>
 
-<a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-
-<!-- Firebase + Admin Logic -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
   import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
@@ -163,170 +89,161 @@
 
   // Login
   const loginBtn = document.getElementById("loginBtn");
-  if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      const password = document.getElementById("adminPassword").value;
-      if (password === "admin123") {
-        document.getElementById("adminLogin").style.display = "none";
-        document.getElementById("adminDashboard").style.display = "block";
-        await Promise.all([
-          loadMessages(),
-          loadSubscribers(),
-          loadBlogs(),
-          loadPortfolio()
-        ]);
-      } else {
-        alert("Incorrect password. Access denied.");
-      }
-    });
-  }
+  loginBtn.addEventListener("click", async () => {
+    const pwd = document.getElementById("adminPassword").value;
+    if (pwd === "admin123") {
+      document.getElementById("adminLogin").style.display = "none";
+      document.getElementById("adminDashboard").style.display = "block";
+      // Load all sections
+      await Promise.all([
+        loadMessages(),
+        loadSubscribers(),
+        loadBlogs(),
+        loadPortfolio()
+      ]);
+    } else {
+      alert("Wrong password");
+    }
+  });
 
-  // Load Contact Messages
   async function loadMessages() {
-    const messagesDiv = document.getElementById("messagesList");
-    messagesDiv.innerHTML = '<p>Loading messages...</p>';
+    const div = document.getElementById("messagesList");
     try {
       const q = query(collection(db, "contactMessages"), orderBy("timestamp", "desc"));
       const snap = await getDocs(q);
-      if (snap.empty) { messagesDiv.innerHTML = '<p>No messages yet.</p>'; return; }
-      messagesDiv.innerHTML = "";
-      snap.forEach(doc => {
-        const data = doc.data();
+      if (snap.empty) { div.innerHTML = "No messages."; return; }
+      div.innerHTML = "";
+      snap.forEach(docSnap => {
+        const data = docSnap.data();
         const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Unknown";
-        const card = document.createElement("div");
-        card.className = "message-card";
-        card.innerHTML = `<strong>${escapeHtml(data.name)}</strong> (${escapeHtml(data.email)})<br><small>${date}</small><p>${escapeHtml(data.message)}</p>`;
-        messagesDiv.appendChild(card);
+        div.innerHTML += `
+          <div class="message-card">
+            <strong>${escapeHtml(data.name)}</strong> (${escapeHtml(data.email)})<br>
+            <small>${date}</small>
+            <p>${escapeHtml(data.message)}</p>
+          </div>
+        `;
       });
-    } catch (error) {
-      messagesDiv.innerHTML = '<p>Error loading messages.</p>';
+    } catch (err) {
+      div.innerHTML = `<span class="error-text">Error: ${err.message}</span>`;
     }
   }
 
-  // Load Subscribers
   async function loadSubscribers() {
     const div = document.getElementById("subscribersList");
-    div.innerHTML = '<p>Loading subscribers...</p>';
     try {
       const q = query(collection(db, "newsletter"), orderBy("timestamp", "desc"));
       const snap = await getDocs(q);
-      if (snap.empty) { div.innerHTML = '<p>No subscribers yet.</p>'; return; }
+      if (snap.empty) { div.innerHTML = "No subscribers."; return; }
       div.innerHTML = "";
-      snap.forEach(doc => {
-        const data = doc.data();
+      snap.forEach(docSnap => {
+        const data = docSnap.data();
         const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Unknown";
-        const card = document.createElement("div");
-        card.className = "message-card";
-        card.innerHTML = `<strong>${escapeHtml(data.email)}</strong><br><small>Subscribed: ${date}</small>`;
-        div.appendChild(card);
+        div.innerHTML += `
+          <div class="message-card">
+            <strong>${escapeHtml(data.email)}</strong><br>
+            <small>Subscribed: ${date}</small>
+          </div>
+        `;
       });
-    } catch (error) {
-      div.innerHTML = '<p>Error loading subscribers.</p>';
+    } catch (err) {
+      div.innerHTML = `<span class="error-text">Error: ${err.message}</span>`;
     }
   }
 
-  // Load Blog Posts (for management)
   async function loadBlogs() {
-    const container = document.getElementById("blogListAdmin");
-    container.innerHTML = '<p>Loading blog posts...</p>';
+    const div = document.getElementById("blogListAdmin");
     try {
       const q = query(collection(db, "blogPosts"), orderBy("date", "desc"));
       const snap = await getDocs(q);
-      if (snap.empty) { container.innerHTML = '<p>No blog posts yet.</p>'; return; }
-      container.innerHTML = "";
+      if (snap.empty) { div.innerHTML = "No blog posts."; return; }
+      div.innerHTML = "";
       snap.forEach(docSnap => {
         const post = docSnap.data();
-        const div = document.createElement("div");
-        div.className = "item-card";
-        div.innerHTML = `
-          <div><strong>${escapeHtml(post.title)}</strong><br><small>${post.date ? new Date(post.date.toDate()).toLocaleDateString() : 'No date'}</small></div>
-          <button class="delete-btn" data-id="${docSnap.id}" data-type="blog">Delete</button>
+        const date = post.date ? post.date.toDate().toLocaleDateString() : "No date";
+        div.innerHTML += `
+          <div class="item-card">
+            <div><strong>${escapeHtml(post.title)}</strong><br><small>${date}</small></div>
+            <button class="delete-btn" data-id="${docSnap.id}" data-type="blog">Delete</button>
+          </div>
         `;
-        container.appendChild(div);
       });
       // Attach delete events
       document.querySelectorAll('.delete-btn[data-type="blog"]').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener("click", async () => {
           if (confirm("Delete this blog post?")) {
             await deleteDoc(doc(db, "blogPosts", btn.dataset.id));
             await loadBlogs();
           }
         });
       });
-    } catch (error) {
-      container.innerHTML = '<p>Error loading blog posts.</p>';
+    } catch (err) {
+      div.innerHTML = `<span class="error-text">Error: ${err.message}</span>`;
     }
   }
 
-  // Load Portfolio Items (for management)
   async function loadPortfolio() {
-    const container = document.getElementById("portfolioListAdmin");
-    container.innerHTML = '<p>Loading portfolio items...</p>';
+    const div = document.getElementById("portfolioListAdmin");
     try {
       const snap = await getDocs(collection(db, "portfolioItems"));
-      if (snap.empty) { container.innerHTML = '<p>No portfolio items yet.</p>'; return; }
-      container.innerHTML = "";
+      if (snap.empty) { div.innerHTML = "No portfolio items."; return; }
+      div.innerHTML = "";
       snap.forEach(docSnap => {
         const item = docSnap.data();
-        const div = document.createElement("div");
-        div.className = "item-card";
-        div.innerHTML = `
-          <div><strong>${escapeHtml(item.title)}</strong> (${escapeHtml(item.category)})</div>
-          <button class="delete-btn" data-id="${docSnap.id}" data-type="portfolio">Delete</button>
+        div.innerHTML += `
+          <div class="item-card">
+            <div><strong>${escapeHtml(item.title)}</strong> (${escapeHtml(item.category)})</div>
+            <button class="delete-btn" data-id="${docSnap.id}" data-type="portfolio">Delete</button>
+          </div>
         `;
-        container.appendChild(div);
       });
       document.querySelectorAll('.delete-btn[data-type="portfolio"]').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener("click", async () => {
           if (confirm("Delete this portfolio item?")) {
             await deleteDoc(doc(db, "portfolioItems", btn.dataset.id));
             await loadPortfolio();
           }
         });
       });
-    } catch (error) {
-      container.innerHTML = '<p>Error loading portfolio items.</p>';
+    } catch (err) {
+      div.innerHTML = `<span class="error-text">Error: ${err.message}</span>`;
     }
   }
 
-  // Add Blog Post
-  const blogForm = document.getElementById("addBlogForm");
-  if (blogForm) {
-    blogForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const title = document.getElementById("blogTitle").value.trim();
-      const content = document.getElementById("blogContent").value.trim();
-      const image = document.getElementById("blogImage").value.trim();
-      const excerpt = document.getElementById("blogExcerpt").value.trim();
-      if (!title || !content) return alert("Title and content are required.");
-      await addDoc(collection(db, "blogPosts"), {
-        title, content, image, excerpt,
-        date: serverTimestamp()
-      });
-      alert("Blog post added!");
-      blogForm.reset();
-      await loadBlogs();
+  // Add blog post
+  document.getElementById("addBlogForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const title = document.getElementById("blogTitle").value.trim();
+    const content = document.getElementById("blogContent").value.trim();
+    if (!title || !content) return alert("Title and content are required.");
+    await addDoc(collection(db, "blogPosts"), {
+      title,
+      content,
+      image: document.getElementById("blogImage").value.trim(),
+      excerpt: document.getElementById("blogExcerpt").value.trim(),
+      date: serverTimestamp()
     });
-  }
+    alert("Blog post added!");
+    e.target.reset();
+    await loadBlogs();
+  });
 
-  // Add Portfolio Item
-  const portForm = document.getElementById("addPortfolioForm");
-  if (portForm) {
-    portForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const title = document.getElementById("portTitle").value.trim();
-      const category = document.getElementById("portCategory").value;
-      const image = document.getElementById("portImage").value.trim();
-      const description = document.getElementById("portDesc").value.trim();
-      if (!title || !image) return alert("Title and Image URL are required.");
-      await addDoc(collection(db, "portfolioItems"), {
-        title, category, image, description
-      });
-      alert("Portfolio item added!");
-      portForm.reset();
-      await loadPortfolio();
+  // Add portfolio item
+  document.getElementById("addPortfolioForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const title = document.getElementById("portTitle").value.trim();
+    const image = document.getElementById("portImage").value.trim();
+    if (!title || !image) return alert("Title and image URL are required.");
+    await addDoc(collection(db, "portfolioItems"), {
+      title,
+      category: document.getElementById("portCategory").value,
+      image,
+      description: document.getElementById("portDesc").value.trim()
     });
-  }
+    alert("Portfolio item added!");
+    e.target.reset();
+    await loadPortfolio();
+  });
 
   function escapeHtml(str) {
     if (!str) return "";
@@ -338,19 +255,20 @@
     });
   }
 
-  // Mobile menu toggle (improved)
+  // Mobile menu
   (function() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    if (!menuBtn || !navLinks) return;
-    menuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+      });
+    }
   })();
 </script>
 </body>
-          </html>
+</html>
