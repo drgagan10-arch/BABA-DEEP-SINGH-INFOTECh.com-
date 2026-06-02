@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div id="loader" style="display: none;"><div class="spinner"></div></div>
+<!-- NO LOADER DIV AT ALL -->
 
 <nav class="navbar">
   <div class="nav-container">
@@ -31,7 +31,7 @@
   <h1>Our Recent Work</h1>
   <p style="text-align: center; margin-bottom: 2rem;">Explore some of our successful projects delivered for satisfied clients.</p>
   <div id="portfolioGrid" class="portfolio-grid">
-    <p>Loading projects...</p>
+    <p>Loading portfolio items...</p>
   </div>
 </main>
 
@@ -43,17 +43,15 @@
 
 <a href="#" onclick="startProject()" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-<!-- Define startProject if not already defined -->
 <script>
+  // Define WhatsApp function
   window.startProject = function() {
     const phone = "918221826243";
     const msg = "Hi, I want to start a project for my website. Please share your expertise and pricing.";
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, "_blank");
   };
-</script>
 
-<script>
-  // Hamburger menu (simple)
+  // Hamburger menu
   (function() {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -71,6 +69,7 @@
   // Load portfolio from Firestore
   (async function() {
     const container = document.getElementById('portfolioGrid');
+    container.innerHTML = '<p>Loading portfolio items...</p>';
     try {
       const { initializeApp } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js");
       const { getFirestore, collection, getDocs } = await import("https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js");
